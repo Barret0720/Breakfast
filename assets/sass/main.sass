@@ -228,44 +228,6 @@ input
     transition: .4s
 
 
-// map
-.map
-  width: 100%
-  iframe
-    width: 100%
-    height: calc((40vw / 16) * 9)
-    transition: all .5s ease
-  .hidden
-    visibility: hidden
-    opacity: 0
-
-@media screen and (max-width: 768px)
-  .map
-    iframe
-      min-height: 30vh
-
-
-// github
-.github
-  position: fixed
-  left: 0
-  bottom: 0
-  display: flex
-  width: 100px
-  height: 100px
-  &::before
-    content: ''
-    width: 0
-    height: 0
-    border-style: solid
-    border-width: 100px 0 0 100px
-    border-color: transparent transparent transparent #6e5494
-  .fa
-    position: absolute
-    left: 10px
-    bottom: 5px
-    font-size: 3rem
-    color: #FFF
 
 @media screen and (max-width: 768px)
   .github
@@ -279,14 +241,3 @@ input
       font-size: 2rem
 
 
-
-// seo
-.search-only
-  position: absolute
-  width: 1px
-  height: 1px
-  padding: 0
-  margin: -1px
-  overflow: hidden
-  clip: rect(0, 0, 0, 0)
-  border: 0
