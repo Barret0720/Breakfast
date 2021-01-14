@@ -55,9 +55,10 @@
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
-				let meals = []; // 素
+				let meals = []; // 餐點
 
-				// 分葷、素，塞入陣列
+				// 餐點塞入陣列
+			
 				const d = data.feed.entry, len =  d.length;
 				
 				for(let i = 0; i < len; i++) {
@@ -112,6 +113,8 @@
 
 						}, duration);
 					};
+					
+					chooseShop(meals);
 
 
 				}, false);
