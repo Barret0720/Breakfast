@@ -105,6 +105,10 @@
 				let r; // 亂數
 				let max, min; // 陣列的最大、小值
 				let txt; // 結果
+			
+							// 地圖	
+				const map = document.querySelector('#map iframe');	
+
 
 
 				// 按鈕
@@ -145,9 +149,23 @@
 						setTimeout(() => {
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
+							
+														// 改變地圖位置	
+							map.src = 'https://www.google.com/maps/embed/v1/place?key=' + embedApiKey + '&q=' + txt;	
+
 
 						}, duration);
+						
+												// 顯示地圖	
+						map.addEventListener('load', () => {	
+							map.classList.remove('hidden');	
+							e.target.classList.remove('not-allow');	
+						}, false);
 					};
+					
+										// 地圖先消失	
+					map.classList.add('hidden');
+					
 					// 判斷葷素後，開始執行
 					let vage = document.getElementById('vage');
 					vage.checked ? chooseShop(vages) : chooseShop(meats);
