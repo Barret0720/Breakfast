@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,39 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 
-	<title>午餐吃什麼 - Augustus - Let's Write</title>
-	<meta name="description" content="午餐吃什麼？用抽獎方式來決定今天的午餐吧！由 Augustus 開發，以 Google Excel 當資料庫，介接 Google Map Embed API，輕鬆好管理。">
-	<link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
-	<meta property="og:url" content="https://letswritetw.github.io/letswrite-food-check/" />
-	<meta property="og:site_name" content="Let's Write" />
-	<meta property="og:title" content="午餐吃什麼 - by Augustus - Let's Write" />
-	<meta property="og:description" content="午餐吃什麼？用抽獎方式來決定今天的午餐吧！由 Augustus 開發，以 Google Excel 當資料庫，介接 Google Map Embed API，輕鬆好管理。" />
-	<meta property="og:image" content="https://letswritetw.github.io/letswrite-food-check/assets/img/bg-food.jpg" />
-	<meta itemprop="name" content="午餐吃什麼 - by Augustus">
-	<meta itemprop="description" content="午餐吃什麼？用抽獎方式來決定今天的午餐吧！由 Augustus 開發，以 Google Excel 當資料庫，介接 Google Map Embed API，輕鬆好管理。">
-	<meta itemprop="image" content="https://letswritetw.github.io/letswrite-food-check/assets/img/bg-food.jpg">
-
-
+	<title>鮮堡漢堡，早餐選起來</title>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'/>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
 	<link rel="stylesheet" href="assets/css/main.css">
 
-	<!-- Google Tag Manager-->
-	<script>
-		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-PGQ9WQT');
-	</script>
+
 
 </head>
 <body>
 
-	<!-- Google Tag Manager (noscript)-->
-	<noscript>
-		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-	</noscript>
 
 	<!--  背景圖  -->
 	<main class="full-block">
@@ -50,7 +28,7 @@
 			<section class="god">
 				<h1>
 					<span class="wrap">
-						<span>午餐吃什麼呢？</span>
+						<span>讓我想想，早餐吃什麼</span>
 					</span>
 				</h1>
 			</section>
@@ -109,9 +87,6 @@
 
 		const duration = 2000; // 拉霸效果執行多久
 
-		// Maps Embed API 的 key，可由 https://console.developers.google.com/apis 申請
-		const embedApiKey = 'AIzaSyDVSu8cjT27wDKGUaahg5qx-FXlNVqD2N8';
-
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
@@ -131,9 +106,6 @@
 				let max, min; // 陣列的最大、小值
 				let txt; // 結果
 
-
-				// 地圖
-				const map = document.querySelector('#map iframe');
 
 				// 按鈕
 				const btn = document.querySelector('.btn-start');
@@ -174,23 +146,8 @@
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
 
-							// 改變地圖位置
-							map.src = 'https://www.google.com/maps/embed/v1/place?key=' + embedApiKey + '&q=' + txt;
-
 						}, duration);
-
-						// 顯示地圖
-						map.addEventListener('load', () => {
-							map.classList.remove('hidden');
-							e.target.classList.remove('not-allow');
-						}, false);
 					};
-
-
-
-					// 地圖先消失
-					map.classList.add('hidden');
-
 					// 判斷葷素後，開始執行
 					let vage = document.getElementById('vage');
 					vage.checked ? chooseShop(vages) : chooseShop(meats);
