@@ -23,7 +23,7 @@
 		
 		<!--  主要內容  -->
 		<div class="main-block">
-			
+
 			<!--  顯示區塊  -->
 			<section class="god">
 				<h1>
@@ -36,18 +36,6 @@
 			<!--  按鈕  -->
 			<section class="btns">
 
-				<div class="checkbox">
-					<p class="vegetarian">Vegetarian？</p>
-
-					<!--  素食  -->
-					<div class="check">
-						<label class="toggle">
-							<input id="vage" type="checkbox" checked>
-							<span class="button round"></span>
-						</label>
-					</div> 
-				</div>
-
 				<!--  start  -->
 				<a class="btn-start" href="#">
 					<span class="line top -h"></span>
@@ -56,42 +44,24 @@
 					<span class="line left -v"></span>
 				</a>
 			</section>
-
-			<!--  地圖 
-			<section id="map" class="map">
-				<iframe frameborder="0" style="border:0" src="" allowfullscreen></iframe>
-			</section> -->
 		</div>
 	</main>
-
-	<!--  github link  -->
-<!-- 	<div class="github">
-		<a href="https://github.com/letswritetw/letswrite-food-check">
-			<i class="fa fa-github" aria-hidden="true"></i>
-		</a>
-	</div> -->
-
-
 
 	<script>
 		const url = 'https://spreadsheets.google.com/feeds/list/1iT9xxXUPMc0QFxXHalMDHWvPIAVmUGgNfo8xqWIm1hM/1/public/values?alt=json';
 
 		const duration = 2000; // 拉霸效果執行多久
 
-// 		// Maps Embed API 的 key，可由 https://console.developers.google.com/apis 申請
-// 		const embedApiKey = 'AIzaSyDVSu8cjT27wDKGUaahg5qx-FXlNVqD2N8';
-
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
-				let vages = []; // 素
-				let meats = []; // 葷
+				let meals = []; // 素
 
 				// 分葷、素，塞入陣列
 				const d = data.feed.entry, len =  d.length;
 				
 				for(let i = 0; i < len; i++) {
-					d[i].gsx$vage.$t === '是' ? vages.push(d[i].gsx$shops.$t) : meats.push(d[i].gsx$shops.$t);
+					meals.push(d[i].gsx$food.$t);
 				}
 				
 
@@ -100,9 +70,6 @@
 				let max, min; // 陣列的最大、小值
 				let txt; // 結果
 
-
-// 				// 地圖
-// 				const map = document.querySelector('#map iframe');
 
 				// 按鈕
 				const btn = document.querySelector('.btn-start');
@@ -143,26 +110,9 @@
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
 
-// 							// 改變地圖位置
-// 							map.src = 'https://www.google.com/maps/embed/v1/place?key=' + embedApiKey + '&q=' + txt;
-
 						}, duration);
-
-// 						// 顯示地圖
-// 						map.addEventListener('load', () => {
-// 							map.classList.remove('hidden');
-// 							e.target.classList.remove('not-allow');
-// 						}, false);
 					};
 
-
-
-// 					// 地圖先消失
-// 					map.classList.add('hidden');
-
-					// 判斷葷素後，開始執行
-					let vage = document.getElementById('vage');
-					vage.checked ? chooseShop(vages) : chooseShop(meats);
 
 				}, false);
 
