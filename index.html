@@ -23,7 +23,7 @@
 			
 			<!--  顯示區塊  -->
 
-				<h1></br></br></br></br></br>
+				<h1>
 					<span class="wrap">
 						<span>讓我想想，早餐吃什麼</span>
 					</span>
@@ -104,9 +104,10 @@
 						setTimeout(() => {
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
+							e.target.classList.remove('not-allow');
 							
 						}, duration);
-						e.target.classList.remove('not-allow');
+						
 					};
 					
 				// 判斷葷素後，開始執行
