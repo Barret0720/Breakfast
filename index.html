@@ -90,6 +90,9 @@
 							input.insertAdjacentHTML('beforeend', '<span>' + toggle[i] + '</span>');
 						}
 						
+						// 禁止按鈕再被點擊
+						e.target.classList.add('not-allow');
+			
 
 						// 加入動畫 class name
 						const list = document.querySelectorAll('.wrap > span');
@@ -111,6 +114,7 @@
 				// 判斷葷素後，開始執行
 					
 					chooseShop(food);
+					e.target.classList.remove('not-allow');
 
 				}, false);
 
