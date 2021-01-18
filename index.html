@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="canonical" href="https://letswritetw.github.io/letswrite-food-check/" />
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
@@ -11,8 +10,6 @@
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'/>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
 	<link rel="stylesheet" href="assets/css/main.css">
-
-
 
 </head>
 <body>
@@ -26,6 +23,12 @@
 			
 			<!--  顯示區塊  -->
 			<section class="god">
+			</section>
+			<section class="god">
+			</section>			
+			<section class="god">
+			</section>
+			<section class="god">
 				<h1>
 					<span class="wrap">
 						<span>讓我想想，早餐吃什麼</span>
@@ -35,18 +38,6 @@
 
 			<!--  按鈕  -->
 			<section class="btns">
-
-				<div class="checkbox">
-					<p class="vegetarian">Vegetarian？</p>
-
-					<!--  素食  -->
-					<div class="check">
-						<label class="toggle">
-							<input id="vage" type="checkbox" checked>
-							<span class="button round"></span>
-						</label>
-					</div> 
-				</div>
 
 				<!--  start  -->
 				<a class="btn-start" href="#">
@@ -58,29 +49,8 @@
 			</section>
 
 			<!--  地圖  -->
-			<section id="map" class="map">
-				<iframe frameborder="0" style="border:0" src="" allowfullscreen></iframe>
-			</section>
 		</div>
 	</main>
-
-	<!--  github link  -->
-	<div class="github">
-		<a href="https://github.com/letswritetw/letswrite-food-check">
-			<i class="fa fa-github" aria-hidden="true"></i>
-		</a>
-	</div>
-
-	<!--  for search  -->
-	<div class="search-only">
-		<h2>
-			午餐吃什麼選擇器 Google Excel、Google Map Embed API
-		</h2>
-		<p>
-			午餐吃什麼？用抽獎方式來決定今天的午餐吧！由 Augustus 開發，以 Google Excel 當資料庫，介接 Google Map Embed API，輕鬆好管理。
-		</p>
-	</div>
-	
 
 	<script>
 		const url = 'https://spreadsheets.google.com/feeds/list/1iT9xxXUPMc0QFxXHalMDHWvPIAVmUGgNfo8xqWIm1hM/1/public/values?alt=json';
@@ -93,8 +63,8 @@
 				let food = []; // 素
 				// 分葷、素，塞入陣列
 				const d = data.feed.entry, len =  d.length;
-				
-				for(let i = 0; i < len; i++) {
+				for(let i = 0; i < len; i++) 
+				{
 					food.push(d[i].gsx$food.$t);
 				}
 				
@@ -104,11 +74,6 @@
 				let max, min; // 陣列的最大、小值
 				let txt; // 結果
 			
-							// 地圖	
-				const map = document.querySelector('#map iframe');	
-
-
-
 				// 按鈕
 				const btn = document.querySelector('.btn-start');
 				
@@ -147,23 +112,10 @@
 						setTimeout(() => {
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
-							
-														// 改變地圖位置	
-							
-
-						}, duration);
-						
-												// 顯示地圖	
-						map.addEventListener('load', () => {	
-							map.classList.remove('hidden');	
-							e.target.classList.remove('not-allow');	
-						}, false);
+							}, duration);
 					};
 					
-										// 地圖先消失	
-					map.classList.add('hidden');
-					
-					// 判斷葷素後，開始執行
+				// 判斷葷素後，開始執行
 					
 					chooseShop(food);
 
