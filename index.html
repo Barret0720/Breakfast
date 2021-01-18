@@ -110,17 +110,9 @@
 						setTimeout(() => {
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
-							map.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDVSu8cjT27wDKGUaahg5qx-FXlNVqD2N8&q=鮮堡漢堡早餐+文化店';
 							
 						}, duration);
-
-						// 顯示地圖
-						map.addEventListener('load', () => {
-							map.classList.remove('hidden');
-							e.target.classList.remove('not-allow');
 					};
-					
-					map.classList.add('hidden');
 					
 				// 判斷葷素後，開始執行
 					
