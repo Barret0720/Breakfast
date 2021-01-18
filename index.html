@@ -85,19 +85,17 @@
 	<script>
 		const url = 'https://spreadsheets.google.com/feeds/list/1iT9xxXUPMc0QFxXHalMDHWvPIAVmUGgNfo8xqWIm1hM/1/public/values?alt=json';
 
-		const duration = 2000; // 拉霸效果執行多久
+		const duration = 100; // 拉霸效果執行多久
 
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
-				let vages = []; // 素
-				let meats = []; // 葷
-
+				let food = []; // 素
 				// 分葷、素，塞入陣列
 				const d = data.feed.entry, len =  d.length;
 				
 				for(let i = 0; i < len; i++) {
-					d[i].gsx$vage.$t === '是' ? vages.push(d[i].gsx$shops.$t) : meats.push(d[i].gsx$shops.$t);
+					food.push(d[i].gsx$food.$t);
 				}
 				
 
@@ -151,8 +149,7 @@
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
 							
 														// 改變地圖位置	
-							map.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDVSu8cjT27wDKGUaahg5qx-FXlNVqD2N8&q=鮮堡漢堡早餐板橋文化';	
-
+							
 
 						}, duration);
 						
@@ -167,8 +164,8 @@
 					map.classList.add('hidden');
 					
 					// 判斷葷素後，開始執行
-					let vage = document.getElementById('vage');
-					vage.checked ? chooseShop(vages) : chooseShop(meats);
+					
+					chooseShop(food);
 
 				}, false);
 
