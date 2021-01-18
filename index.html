@@ -47,15 +47,13 @@
 					<span class="line left -v"></span>
 				</a>
 			</section>
-
-			<!--  地圖  -->
 		</div>
 	</main>
 
 	<script>
 		const url = 'https://spreadsheets.google.com/feeds/list/1iT9xxXUPMc0QFxXHalMDHWvPIAVmUGgNfo8xqWIm1hM/1/public/values?alt=json';
 
-		const duration = 100; // 拉霸效果執行多久
+		const duration = 500; // 拉霸效果執行多久
 
 		fetch(url)
 			.then(res => res.json())
@@ -112,8 +110,16 @@
 						setTimeout(() => {
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
-							}, duration);
+							
+						}, duration);
+
+						// 顯示地圖
+						map.addEventListener('load', () => {
+							map.classList.remove('hidden');
+							e.target.classList.remove('not-allow');
 					};
+					
+					map.classList.add('hidden');
 					
 				// 判斷葷素後，開始執行
 					
