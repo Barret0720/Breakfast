@@ -22,14 +22,8 @@
 		<div class="main-block">
 			
 			<!--  顯示區塊  -->
-			<section class="god">
-			</section>
-			<section class="god">
-			</section>			
-			<section class="god">
-			</section>
-			<section class="god">
-				<h1>
+
+				<h1></br></br></br></br></br>
 					<span class="wrap">
 						<span>讓我想想，早餐吃什麼</span>
 					</span>
@@ -53,7 +47,7 @@
 	<script>
 		const url = 'https://spreadsheets.google.com/feeds/list/1iT9xxXUPMc0QFxXHalMDHWvPIAVmUGgNfo8xqWIm1hM/1/public/values?alt=json';
 
-		const duration = 500; // 拉霸效果執行多久
+		const duration = 2000; // 拉霸效果執行多久
 
 		fetch(url)
 			.then(res => res.json())
@@ -94,6 +88,9 @@
 						for(let i = 0; i < toggle.length; i++) {
 							input.insertAdjacentHTML('beforeend', '<span>' + toggle[i] + '</span>');
 						}
+						
+						// 禁止按鈕再被點擊
+						e.target.classList.add('not-allow');
 
 						// 加入動畫 class name
 						const list = document.querySelectorAll('.wrap > span');
@@ -109,6 +106,7 @@
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
 							
 						}, duration);
+						e.target.classList.remove('not-allow');
 					};
 					
 				// 判斷葷素後，開始執行
