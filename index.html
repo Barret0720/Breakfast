@@ -95,9 +95,6 @@
 							input.insertAdjacentHTML('beforeend', '<span>' + toggle[i] + '</span>');
 						}
 
-						// 禁止按鈕再被點擊
-						e.target.classList.add('not-allow');
-
 						// 加入動畫 class name
 						const list = document.querySelectorAll('.wrap > span');
 						Array.prototype.forEach.call(list, l => l.classList.add('span-' + (toggle.length - 1)));
