@@ -89,8 +89,6 @@
 							input.insertAdjacentHTML('beforeend', '<span>' + toggle[i] + '</span>');
 						}
 						
-						// 禁止按鈕再被點擊
-						e.target.classList.add('not-allow');
 
 						// 加入動畫 class name
 						const list = document.querySelectorAll('.wrap > span');
@@ -104,8 +102,7 @@
 						setTimeout(() => {
 							// 停止拉霸動畫
 							Array.prototype.forEach.call(list, l => l.removeAttribute('class'));
-							e.target.classList.remove('not-allow');
-							
+						
 						}, duration);
 						
 					};
